@@ -1,0 +1,1839 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Anti-AI Qwen Academy | Немецкий язык ЕГЭ-2027</title>
+<meta name="description" content="Офлайн-тренажёр ЕГЭ-2027 по немецкому языку: 38 письменных + 4 устных задания, 82 первичных балла, 190 минут, структура ФИПИ." />
+<link rel="icon" href="favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<style>
+  * { box-sizing: border-box; }
+  :root {
+    --bg: #070b18;
+    --card: rgba(18, 26, 51, 0.72);
+    --card-soft: rgba(255, 255, 255, 0.05);
+    --border: rgba(255, 255, 255, 0.1);
+    --text: #e8ecff;
+    --muted: #9aa4c8;
+    --accent: #22d3ee;
+    --violet: #7c3aed;
+    --green: #22c55e;
+    --red: #ef4444;
+    --orange: #f59e0b;
+  }
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background:
+      radial-gradient(circle at top left, rgba(124, 58, 237, 0.22), transparent 30%),
+      radial-gradient(circle at top right, rgba(34, 211, 238, 0.18), transparent 28%),
+      var(--bg);
+    color: var(--text);
+    line-height: 1.55;
+    min-height: 100vh;
+  }
+  .container { width: min(1120px, 92%); margin: 0 auto; }
+  header {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: blur(14px);
+    background: rgba(7, 11, 24, 0.82);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; flex-wrap: wrap; }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .brand-logo {
+    width: 46px; height: 46px; border-radius: 15px; object-fit: cover;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    box-shadow: 0 12px 30px rgba(34, 211, 238, 0.18);
+    flex: 0 0 auto;
+  }
+  .brand strong { display: block; font-size: 16px; line-height: 1.2; }
+  .brand small { color: var(--muted); font-size: 12px; }
+  nav { display: flex; gap: 18px; flex-wrap: wrap; }
+  nav a { color: #cfd6ff; text-decoration: none; font-weight: 700; font-size: 14px; }
+  nav a:hover { color: white; }
+  .top-controls { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-left: auto; }
+
+  .timer-widget {
+    display: flex; align-items: center; gap: 6px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 14px; padding: 6px 8px;
+  }
+  .timer-widget select {
+    background: rgba(7, 11, 24, 0.55); color: var(--text);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 10px; padding: 6px 8px; font: inherit;
+    font-size: 12px; max-width: 200px;
+  }
+  #timerDisplay {
+    font-variant-numeric: tabular-nums; font-weight: 900;
+    min-width: 88px; text-align: center; color: white;
+  }
+  .timer-btn {
+    border: 0; background: rgba(255, 255, 255, 0.08); color: var(--text);
+    border-radius: 10px; padding: 6px 9px; cursor: pointer;
+    font-size: 14px; transition: 0.15s ease;
+  }
+  .timer-btn:hover { background: rgba(255, 255, 255, 0.14); }
+  .timer-widget.warning #timerDisplay { color: var(--orange); }
+  .timer-widget.danger #timerDisplay { color: var(--red); animation: pulse 1s infinite; }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.55; } }
+
+  .hero { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 24px; padding: 48px 0 28px; align-items: start; }
+  .badge {
+    display: inline-flex; align-items: center;
+    padding: 8px 12px; border-radius: 999px;
+    background: rgba(124, 58, 237, 0.18);
+    border: 1px solid rgba(124, 58, 237, 0.35);
+    color: #d8ccff; font-size: 13px; font-weight: 700;
+  }
+  h1 { font-size: clamp(34px, 5vw, 58px); line-height: 1.05; margin: 16px 0; }
+  h1 .accent { color: var(--accent); }
+  .lead { color: #b8c1e6; max-width: 72ch; font-size: 17px; }
+  .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 22px; }
+  .btn {
+    border: 0; border-radius: 14px; padding: 14px 18px;
+    font-weight: 850; cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    background: linear-gradient(135deg, var(--violet), var(--accent));
+    color: white; box-shadow: 0 12px 30px rgba(34, 211, 238, 0.18);
+    font-size: 15px;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn.secondary { background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.14); color: #eaf0ff; box-shadow: none; }
+  .btn.small { padding: 10px 14px; font-size: 14px; border-radius: 12px; }
+  .panel {
+    background: linear-gradient(180deg, rgba(124, 58, 237, 0.16), rgba(6, 182, 212, 0.10));
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 24px; padding: 22px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  }
+  .panel h3 { margin: 0 0 14px; font-size: 20px; }
+  .metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 18px 0; }
+  .metric {
+    background: rgba(7, 11, 24, 0.35); border-radius: 16px;
+    padding: 14px; border: 1px solid rgba(255, 255, 255, 0.08);
+    min-height: 82px;
+  }
+  .metric strong { display: block; font-size: 22px; color: white; margin-bottom: 4px; }
+  .metric span { color: var(--muted); font-size: 12px; }
+  progress {
+    width: 100%; height: 10px; border-radius: 999px;
+    overflow: hidden; appearance: none;
+    background: rgba(255, 255, 255, 0.1); border: none; margin-top: 10px;
+  }
+  progress::-webkit-progress-bar { background: rgba(255, 255, 255, 0.1); border-radius: 999px; }
+  progress::-webkit-progress-value { background: linear-gradient(90deg, var(--violet), var(--accent)); border-radius: 999px; }
+  progress::-moz-progress-bar { background: var(--accent); border-radius: 999px; }
+  .note { color: var(--muted); font-size: 13px; margin-top: 12px; }
+
+  section { padding: 28px 0; }
+  .section-head { display: flex; justify-content: space-between; align-items: end; gap: 16px; margin-bottom: 18px; flex-wrap: wrap; }
+  h2 { font-size: clamp(26px, 3vw, 36px); margin: 0; line-height: 1.15; }
+  .sub { color: var(--muted); margin: 6px 0 0; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(245px, 1fr)); gap: 16px; }
+  .card {
+    background: var(--card); border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 22px; padding: 20px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+  }
+  .card h3 { margin: 0 0 10px; font-size: 20px; }
+  .card p { color: #b8c1e6; margin: 0 0 16px; }
+  .warn-card { border-color: rgba(245, 158, 11, 0.35); background: linear-gradient(180deg, rgba(245, 158, 11, 0.10), rgba(18, 26, 51, 0.72)); }
+  .danger-card { border-color: rgba(239, 68, 68, 0.35); background: linear-gradient(180deg, rgba(239, 68, 68, 0.10), rgba(18, 26, 51, 0.72)); }
+  .success-card { border-color: rgba(34, 197, 94, 0.35); background: linear-gradient(180deg, rgba(34, 197, 94, 0.10), rgba(18, 26, 51, 0.72)); }
+  .tag {
+    display: inline-block; padding: 6px 10px; border-radius: 999px;
+    font-size: 12px; font-weight: 850; margin-bottom: 10px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #dbe3ff;
+  }
+  .tag.red { background: rgba(239, 68, 68, 0.14); border-color: rgba(239, 68, 68, 0.35); color: #ffd7d7; }
+  .tag.green { background: rgba(34, 197, 94, 0.14); border-color: rgba(34, 197, 94, 0.35); color: #d7ffe6; }
+  .tag.orange { background: rgba(245, 158, 11, 0.14); border-color: rgba(245, 158, 11, 0.35); color: #fff0cc; }
+  .mini-list { margin: 0; padding-left: 18px; color: #c8d2f5; }
+  .mini-list li { margin: 7px 0; }
+
+  .filter-bar {
+    display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; padding: 14px;
+    background: var(--card-soft); border: 1px solid var(--border); border-radius: 16px; align-items: center;
+  }
+  .filter-bar span { color: var(--muted); font-size: 13px; font-weight: 700; margin-right: 6px; }
+  .filter-btn {
+    padding: 8px 14px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.06); color: var(--text); cursor: pointer; font-size: 13px; font-weight: 700; transition: 0.15s ease;
+  }
+  .filter-btn:hover { background: rgba(255, 255, 255, 0.1); }
+  .filter-btn.active { background: linear-gradient(135deg, var(--violet), var(--accent)); border-color: transparent; color: white; }
+
+  .question-block {
+    background: var(--card); border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 24px; padding: 24px; margin-bottom: 26px;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
+  }
+  .q-number {
+    display: inline-block; padding: 6px 12px; border-radius: 999px;
+    background: rgba(124, 58, 237, 0.22);
+    border: 1px solid rgba(124, 58, 237, 0.45);
+    color: #d8ccff; font-size: 13px; font-weight: 850; margin-bottom: 14px;
+  }
+  .q-number.listen { background: rgba(34, 197, 94, 0.20); border-color: rgba(34, 197, 94, 0.45); color: #d7ffe6; }
+  .q-number.read { background: rgba(245, 158, 11, 0.20); border-color: rgba(245, 158, 11, 0.45); color: #fff0cc; }
+  .q-number.gram { background: rgba(239, 68, 68, 0.20); border-color: rgba(239, 68, 68, 0.45); color: #ffd7d7; }
+  .q-number.write { background: rgba(124, 58, 237, 0.22); border-color: rgba(124, 58, 237, 0.45); color: #d8ccff; }
+  .q-number.speak { background: rgba(34, 211, 238, 0.20); border-color: rgba(34, 211, 238, 0.45); color: #cdeeff; }
+  .q-part { margin-bottom: 18px; }
+  .q-part-label {
+    display: inline-block; font-size: 12px; font-weight: 900;
+    text-transform: uppercase; letter-spacing: 0.5px;
+    color: var(--accent); margin-bottom: 8px;
+  }
+  .q-text {
+    font-size: 17px; font-weight: 700; margin: 0;
+    line-height: 1.5; color: #eaf0ff; white-space: pre-wrap;
+  }
+  .q-info {
+    background: rgba(124, 58, 237, 0.10);
+    border-left: 4px solid var(--violet);
+    border-radius: 0 14px 14px 0;
+    padding: 16px 18px; margin: 18px 0;
+    color: #dbe3ff; font-size: 15px; line-height: 1.55; white-space: pre-wrap;
+  }
+  .q-info strong { color: #ffffff; }
+  .q-base {
+    margin: 14px 0 18px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .q-base summary {
+    cursor: pointer; padding: 12px 16px; font-weight: 900;
+    color: var(--accent); background: rgba(34,211,238,0.08);
+  }
+  .q-base-content {
+    padding: 16px; white-space: pre-wrap;
+    color: #dbe3ff; font-size: 15px; line-height: 1.6;
+  }
+  .answer-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .answer-input {
+    flex: 1; min-width: 220px;
+    background: rgba(7, 11, 24, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: var(--text); border-radius: 14px;
+    padding: 14px 16px; font: inherit; font-size: 16px;
+  }
+  .answer-input:focus {
+    outline: none; border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.15);
+  }
+  .answer-input.correct { border-color: rgba(34, 197, 94, 0.65); background: rgba(34, 197, 94, 0.12); }
+  .answer-input.wrong { border-color: rgba(239, 68, 68, 0.65); background: rgba(239, 68, 68, 0.12); }
+  .answer-input.partial { border-color: rgba(245, 158, 11, 0.65); background: rgba(245, 158, 11, 0.12); }
+  textarea.answer-input { min-height: 140px; resize: vertical; font-family: inherit; line-height: 1.5; }
+  textarea.answer-input.essay { min-height: 220px; }
+
+  .match-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px; padding: 16px; margin: 14px 0;
+    font-size: 14px;
+  }
+  .match-grid h4 {
+    font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;
+    color: var(--accent); margin: 0 0 8px;
+  }
+  .match-grid ul { list-style: none; padding: 0; margin: 0; }
+  .match-grid li { margin: 6px 0; }
+  .match-grid li b { color: var(--violet); }
+  @media (max-width: 640px) { .match-grid { grid-template-columns: 1fr; } }
+
+  .audio-section {
+    background: linear-gradient(180deg, rgba(34, 197, 94, 0.10), rgba(18, 26, 51, 0.72));
+    border: 1px solid rgba(34, 197, 94, 0.4);
+    border-radius: 24px; padding: 22px 24px;
+    margin-bottom: 26px; box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
+  }
+  .audio-section.oral {
+    background: linear-gradient(180deg, rgba(124, 58, 237, 0.14), rgba(18, 26, 51, 0.72));
+    border-color: rgba(124, 58, 237, 0.5);
+  }
+  .audio-section-tag {
+    display: inline-block; padding: 6px 12px; border-radius: 999px;
+    background: rgba(34, 197, 94, 0.18); border: 1px solid rgba(34, 197, 94, 0.5);
+    color: #d7ffe6; font-size: 12px; font-weight: 850; margin-bottom: 10px;
+  }
+  .audio-section.oral .audio-section-tag {
+    background: rgba(124, 58, 237, 0.22); border-color: rgba(124, 58, 237, 0.55); color: #d8ccff;
+  }
+  .audio-section-title { margin: 0 0 8px; font-size: 20px; color: #ffffff; }
+  .audio-section-note { margin: 0; color: #cdeeff; font-size: 14px; line-height: 1.6; }
+  .audio-section-note strong { color: #ffffff; }
+  .audio-section-note code { background: rgba(0,0,0,0.4); padding: 2px 8px; border-radius: 6px; color: #fff; font-family: monospace; font-size: 13px; }
+  .q-audio { margin: 14px 0; padding: 14px; background: rgba(34, 197, 94, 0.08); border: 1px solid rgba(34, 197, 94, 0.35); border-radius: 14px; }
+  .q-audio audio { width: 100%; display: block; }
+  .audio-error { color: #ef4444; background: rgba(239, 68, 68, 0.1); padding: 10px; border-radius: 8px; margin-top: 10px; font-size: 14px; display: none; }
+  .audio-error code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 4px; }
+
+  .result-block { margin-top: 14px; padding: 14px 16px; border-radius: 14px; }
+  .result-block.correct { background: rgba(34, 197, 94, 0.12); border: 1px solid rgba(34, 197, 94, 0.35); }
+  .result-block.wrong { background: rgba(239, 68, 68, 0.12); border: 1px solid rgba(239, 68, 68, 0.35); }
+  .result-block.partial { background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.35); }
+  .verdict { font-size: 17px; font-weight: 900; margin-bottom: 8px; }
+  .verdict.correct { color: #22c55e; }
+  .verdict.wrong { color: #ef4444; }
+  .verdict.partial { color: var(--orange); }
+  .result-row { margin: 6px 0; color: #d7e6ff; font-size: 15px; white-space: pre-wrap; }
+  .result-row strong { color: #ffffff; }
+  .source-row {
+    margin-top: 10px; padding-top: 10px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.18);
+    color: var(--muted); font-size: 13px;
+    white-space: pre-wrap;
+  }
+  .source-row strong { color: #dbe3ff; }
+  .summary {
+    background: linear-gradient(180deg, rgba(34, 197, 94, 0.14), rgba(18, 26, 51, 0.72));
+    border: 1px solid rgba(34, 197, 94, 0.4);
+    border-radius: 24px; padding: 24px; text-align: center; margin-top: 24px;
+  }
+  .summary .score { font-size: 48px; font-weight: 950; color: #fff; }
+  .reset-bar { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; justify-content: space-between; }
+
+  .checklist { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+  .check-item {
+    display: flex; gap: 12px; align-items: flex-start;
+    background: var(--card-soft); border: 1px solid var(--border);
+    border-radius: 16px; padding: 14px; transition: 0.15s ease;
+  }
+  .check-item input { width: 20px; height: 20px; margin-top: 3px; accent-color: var(--accent); flex: 0 0 auto; }
+  .check-item label { cursor: pointer; color: #dbe3ff; }
+  .check-item.done { opacity: 0.72; background: rgba(34, 211, 238, 0.08); border-color: rgba(34, 211, 238, 0.25); }
+  .check-item.done label { text-decoration: line-through; color: #aab5dc; }
+
+  .plan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+  .day {
+    background: var(--card-soft); border: 1px solid var(--border);
+    border-radius: 18px; padding: 16px; min-height: 112px;
+  }
+  .day b { display: block; color: var(--accent); margin-bottom: 6px; font-size: 14px; letter-spacing: 0.2px; }
+  .day.critical { border-color: rgba(239, 68, 68, 0.35); background: rgba(239, 68, 68, 0.08); }
+
+  .support-card {
+    background: linear-gradient(180deg, rgba(124, 58, 237, 0.18), rgba(34, 211, 238, 0.10));
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 24px; padding: 24px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  }
+  .support-card h2 { margin-bottom: 10px; }
+  .support-card p { margin: 10px 0; color: #dbe3ff; }
+  .phone { color: white; font-weight: 900; text-decoration: none; border-bottom: 1px dashed rgba(255, 255, 255, 0.45); }
+  .phone:hover { color: var(--accent); }
+  .copy-status { margin-left: 8px; color: var(--green); font-weight: 850; }
+  .support-card a { color: var(--accent); font-weight: 800; text-decoration: none; }
+  .support-card a:hover { text-decoration: underline; }
+
+  footer {
+    padding: 30px 0 50px; color: var(--muted);
+    text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.08);
+    margin-top: 30px;
+  }
+
+  .word-counter {
+    font-size: 13px; margin-top: 8px; color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .word-counter b { font-weight: 900; }
+
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; }
+    .metrics { grid-template-columns: 1fr; }
+    nav { gap: 12px; }
+    .top-controls { width: 100%; justify-content: space-between; }
+    .timer-widget select { max-width: 150px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="container topbar">
+    <div class="brand">
+      <img src="favicon.ico" class="brand-logo" alt="Anti-AI Qwen Academy Logo" onerror="this.style.display='none'" />
+      <div>
+        <strong>Анти-ИИ Квен Академия</strong>
+        <small>Немецкий язык ЕГЭ-2027 · 42 задания · 82 балла</small>
+      </div>
+    </div>
+
+    <nav>
+      <a href="#structure">Структура</a>
+      <a href="#changes">Изменения 2027</a>
+      <a href="#criteria">Оценивание</a>
+      <a href="#trainer">Тренажёр</a>
+      <a href="#checklist">Чек-лист</a>
+      <a href="#plan">25 дней</a>
+      <a href="#support">Поддержать</a>
+    </nav>
+
+    <div class="top-controls">
+      <div class="timer-widget" id="timerWidget" role="group" aria-label="Exam Timer">
+        <select id="timerPreset" aria-label="Timer Preset">
+          <option value="11400">190 мин</option>
+          <option value="1020">17 мин</option>
+          <option value="1800">30 мин</option>
+          <option value="2400">40 мин</option>
+          <option value="5400">90 мин</option>
+        </select>
+        <span id="timerDisplay">03:10:00</span>
+        <button id="timerToggle" class="timer-btn" type="button">▶</button>
+        <button id="timerReset" class="timer-btn" type="button">↺</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <div>
+      <span class="badge">ФИПИ 2027 · 42 задания · 82 первичных балла · 190 минут письменная часть + 17 минут устная</span>
+      <h1>Поможем сдать <span class="accent">немецкий язык</span> правильно</h1>
+      <p class="lead">
+        Тренажёр составлен по спецификации, кодификатору и демоверсиям ЕГЭ-2027 по немецкому языку.
+        Письменная часть: 38 заданий. Устная часть: 4 задания. Максимум — 82 первичных балла.
+        Время: 190 минут на письменную часть и 17 минут на устную.
+      </p>
+
+      <div class="actions">
+        <button class="btn" onclick="scrollToId('trainer')">Пройти тренажёр</button>
+        <button class="btn secondary" onclick="scrollToId('structure')">Структура экзамена</button>
+        <button class="btn secondary" onclick="scrollToId('criteria')">Критерии</button>
+      </div>
+    </div>
+
+    <aside class="panel">
+      <h3>Быстрая статистика</h3>
+
+      <div class="metrics">
+        <div class="metric">
+          <strong id="answeredCount">0/42</strong>
+          <span>блоков пройдено</span>
+        </div>
+        <div class="metric">
+          <strong id="correctCount">0/42</strong>
+          <span>верных ответов</span>
+        </div>
+        <div class="metric">
+          <strong id="checklistProgress">0%</strong>
+          <span>чек-лист</span>
+        </div>
+      </div>
+
+      <progress id="overall" value="0" max="100"></progress>
+      <p class="note">Ответы и чек-лист сбрасываются при обновлении страницы.</p>
+    </aside>
+  </section>
+
+  <section id="structure">
+    <div class="section-head">
+      <div>
+        <h2>Структура ЕГЭ по немецкому языку</h2>
+        <p class="sub">38 письменных заданий + 4 устных. 82 первичных балла. 190 минут письменная часть + 17 минут устная часть.</p>
+      </div>
+    </div>
+    <div class="grid" id="structureGrid"></div>
+  </section>
+
+  <section id="changes">
+    <div class="section-head">
+      <div>
+        <h2>Что изменилось в ЕГЭ-2027</h2>
+        <p class="sub">Аккуратная формулировка без превышения официальных данных.</p>
+      </div>
+    </div>
+    <div class="grid" id="changesGrid"></div>
+  </section>
+
+  <section id="criteria">
+    <div class="section-head">
+      <div>
+        <h2>Система оценивания</h2>
+        <p class="sub">Задания 3–9, 12–36 — 1 балл. Задание 1 — 2 балла. Задания 2 и 10 — 3 балла. Задание 11 — 2 балла. Задание 37 — 6 баллов. Задание 38 — 14 баллов. Устная часть: 1 + 4 + 5 + 10 = 20 баллов.</p>
+      </div>
+    </div>
+    <div class="grid" id="criteriaGrid"></div>
+  </section>
+
+  <section id="trainer">
+    <div class="section-head">
+      <div>
+        <h2>Тренажёр: 38 письменных + 4 устных задания</h2>
+        <p class="sub">Аудирование → чтение → грамматика и лексика → письменная речь → устная часть.</p>
+      </div>
+    </div>
+
+    <div class="card success-card" style="margin-bottom:18px;">
+      <span class="tag green">✅ Статус материалов</span>
+      <h3>Соответствие демоверсии ФИПИ 2027 по немецкому языку</h3>
+      <p>
+        Демоверсия письменной части ЕГЭ-2027 по немецкому языку опубликована. Тренажёр приведён в соответствие с официальной демоверсией и спецификацией ФИПИ.
+        Для аудирования необходим файл <code>audio-de.mp3</code>, для устного задания 3 — <code>audio-de-oral.mp3</code>.
+      </p>
+    </div>
+
+    <p class="note">
+      Для заданий 1–36 вводится цифра, слово или последовательность цифр. Для заданий 37–42 доступна приблизительная самопроверка; итоговый балл по развёрнутым ответам сверяйте с критериями ФИПИ.
+      Нажми <b>Ctrl+Enter</b> в поле ввода, чтобы быстро проверить ответ.
+    </p>
+
+    <div class="filter-bar">
+      <span>Показать:</span>
+      <button class="filter-btn active" id="filterAll" onclick="setFilter('all', this)">Все (42)</button>
+      <button class="filter-btn" id="filterListen" onclick="setFilter('listen', this)">Аудирование (9)</button>
+      <button class="filter-btn" id="filterRead" onclick="setFilter('read', this)">Чтение (9)</button>
+      <button class="filter-btn" id="filterGram" onclick="setFilter('gram', this)">Грамматика (18)</button>
+      <button class="filter-btn" id="filterWrite" onclick="setFilter('write', this)">Письмо (2)</button>
+      <button class="filter-btn" id="filterSpeak" onclick="setFilter('speak', this)">Устная часть (4)</button>
+    </div>
+
+    <div class="reset-bar">
+      <button class="btn secondary small" onclick="toggleKeys()" id="keysToggle">👁 Показать все ключи</button>
+      <button class="btn secondary small" onclick="resetAll()">🗑 Сбросить все ответы</button>
+    </div>
+
+    <div id="quizContainer"></div>
+    <div id="summaryBox"></div>
+  </section>
+
+  <section id="checklist">
+    <div class="section-head">
+      <div>
+        <h2>Чек-лист подготовки к ЕГЭ-2027 по немецкому языку</h2>
+        <p class="sub">Отмечай выполненные пункты — при новом открытии страницы чек-лист сбросится.</p>
+      </div>
+    </div>
+    <ul class="checklist" id="checklistUl"></ul>
+  </section>
+
+  <section id="plan">
+    <div class="section-head">
+      <div>
+        <h2>Полный курс 25 дней</h2>
+        <p class="sub">Маршрут подготовки по структуре ЕГЭ-2027 по немецкому языку.</p>
+      </div>
+    </div>
+    <div class="plan-grid" id="planGrid"></div>
+  </section>
+
+  <section id="support">
+    <div class="support-card">
+      <h2>🤝 ПОДДЕРЖАТЬ ПРОЕКТ 💙</h2>
+      <p><strong>Приложение бесплатное. Было и останется.</strong></p>
+      <p>Все приложения бесплатны и без рекламы. Ваша помощь помогает развитию офлайн-безопасности и образования.</p>
+      <p>
+        <span>📱 ПЕРЕВОД ПО НОМЕРУ ТЕЛЕФОНА:</span>
+        <a class="phone" href="tel:89202275676">8-920-227-56-76</a>
+        <button class="btn small" onclick="copyPhone()">📋 Копировать номер</button>
+        <span id="copyStatus" class="copy-status" aria-live="polite"></span>
+      </p>
+      <p>✅ Деньги придут мгновенно. Без комиссии. Безопасно.</p>
+      <p>❤️ Спасибо за поддержку!</p>
+      <p>🌟 👉 <a href="https://ancf-hue.github.io/" target="_blank" rel="noopener noreferrer">Каталог бесплатных офлайн-приложений ANTI-AI SHIELD</a>.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">Анти-ИИ Квен Академия • Бесплатный HTML-проект • Немецкий язык ЕГЭ-2027 • ФИПИ</div>
+</footer>
+
+<script>
+/* =========================================================
+   ОСНОВА — без localStorage, всё сбрасывается при загрузке
+   ========================================================= */
+const TOTAL_TASKS = 42;
+
+const WEIGHTS = {
+  1: 2, 2: 3, 3: 1, 4: 1, 5: 1, 6: 1, 7: 1, 8: 1, 9: 1,
+  10: 3, 11: 2, 12: 1, 13: 1, 14: 1, 15: 1, 16: 1, 17: 1, 18: 1,
+  19: 1, 20: 1, 21: 1, 22: 1, 23: 1, 24: 1,
+  25: 1, 26: 1, 27: 1, 28: 1, 29: 1,
+  30: 1, 31: 1, 32: 1, 33: 1, 34: 1, 35: 1, 36: 1,
+  37: 6, 38: 14,
+  39: 1, 40: 4, 41: 5, 42: 10
+};
+
+const SCORING_TYPES = {};
+for (let i = 1; i <= 42; i++) {
+  if ([1, 2, 10, 11].includes(i)) SCORING_TYPES[i] = "strict-partial";
+  else if ((i >= 3 && i <= 9) || (i >= 12 && i <= 18) || (i >= 30 && i <= 36)) SCORING_TYPES[i] = "strict";
+  else if (i >= 19 && i <= 29) SCORING_TYPES[i] = "word";
+  else SCORING_TYPES[i] = "part2";
+}
+
+let currentFilter = "all";
+let showAllKeys = false;
+const savedAnswers = {};      // живёт только в памяти текущей сессии
+let checklistState = {};      // живёт только в памяти текущей сессии
+
+/* =========================================================
+   УТИЛИТЫ
+   ========================================================= */
+function esc(v) {
+  return String(v ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+function scrollToId(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function topicClass(topic) { return "q-number " + topic; }
+
+function topicLabel(topic) {
+  return ({
+    listen: "Раздел 1. Аудирование",
+    read: "Раздел 2. Чтение",
+    gram: "Раздел 3. Грамматика и лексика",
+    write: "Раздел 4. Письменная речь",
+    speak: "Устная часть"
+  })[topic] || topic;
+}
+
+/* =========================================================
+   КАРТОЧКИ
+   ========================================================= */
+const STRUCTURE_CARDS = [
+  {
+    tag: "Всего", cls: "success-card", tagCls: "green",
+    title: "42 задания = 82 балла",
+    list: [
+      "Письменная часть: 38 заданий (190 минут).",
+      "Устная часть: 4 задания (17 минут).",
+      "Аудирование (1–9): 12 баллов (14,6 %).",
+      "Чтение (10–18): 12 баллов (14,6 %).",
+      "Грамматика и лексика (19–36): 18 баллов (22 %).",
+      "Письменная речь (37–38): 20 баллов (24,4 %).",
+      "Говорение (39–42): 20 баллов (24,4 %)."
+    ]
+  },
+  {
+    tag: "Раздел 1", cls: "warn-card", tagCls: "orange",
+    title: "Аудирование (1–9)",
+    list: [
+      "Задание 1 — 6 высказываний, соответствие A–F и 1–7, 2 балла.",
+      "Задание 2 — диалог, Richtig / Falsch / Text sagt dazu nichts, 3 балла.",
+      "Задания 3–9 — интервью с Benjamin Quaderer, по 1 баллу.",
+      "Аудиозапись звучит дважды.",
+      "Файл: audio-de.mp3."
+    ]
+  },
+  {
+    tag: "Раздел 2", cls: "warn-card", tagCls: "orange",
+    title: "Чтение (10–18)",
+    list: [
+      "Задание 10 — 7 текстов и 8 заголовков, 3 балла.",
+      "Задание 11 — пропуски A–F, части 1–7, 2 балла.",
+      "Задания 12–18 — полное понимание текста, по 1 баллу.",
+      "Текст 12–18: «Schönheit aus Eisen und Stahl» (про Савинкова)."
+    ]
+  },
+  {
+    tag: "Раздел 3", cls: "danger-card", tagCls: "red",
+    title: "Грамматика и лексика (19–36)",
+    list: [
+      "19–24 — грамматические формы, ответы могут состоять из двух слов.",
+      "25–29 — словообразование (существительные, прилагательные).",
+      "30–36 — лексика в тексте.",
+      "Рекомендуемое время: около 40 минут."
+    ]
+  },
+  {
+    tag: "Раздел 4 + устная", cls: "danger-card", tagCls: "red",
+    title: "Письменная и устная речь",
+    list: [
+      "Задание 37: электронное письмо Sven, 100–140 слов, 6 баллов.",
+      "Задание 38: высказывание по таблице/диаграмме, 200–250 слов, 14 баллов.",
+      "Устная часть 1: чтение вслух (Die Loreley), 1 балл.",
+      "Устная часть 2: 4 вопроса по кулинарному мастер-классу, 4 балла.",
+      "Устная часть 3: интервью о здоровом образе жизни, 5 баллов.",
+      "Устная часть 4: проект «Allein oder in Gesellschaft», 10 баллов."
+    ]
+  }
+];
+
+const CHANGES_CARDS = [
+  {
+    tag: "Структура", cls: "success-card", tagCls: "green",
+    title: "42 задания = 82 балла",
+    text: "Структура ЕГЭ-2027 по немецкому языку: 42 задания, 82 первичных балла, письменная и устная части."
+  },
+  {
+    tag: "Документы", cls: "", tagCls: "",
+    title: "Основание",
+    text: "Кодификатор и спецификация составлены на основе ФГОС СОО и ФОП СОО с учётом материалов ФИПИ 2027."
+  },
+  {
+    tag: "Осторожно", cls: "warn-card", tagCls: "orange",
+    title: "Формулировка об изменениях",
+    text: "Без официального анонса ФИПИ не утверждаем, что структура полностью идентична 2026 году. Использована безопасная формулировка: структура ЕГЭ-2027 — 42 задания, 82 балла, письменная и устная части."
+  },
+  {
+    tag: "Внимание", cls: "danger-card", tagCls: "red",
+    title: "Типичные ловушки",
+    text: "В заданиях 1, 2, 10, 11 лишние символы в ответе дают 0 баллов. В задании 37 менее 90 слов = 0 баллов; более 154 слов — только первые 140 слов. В задании 38 менее 180 слов = 0 баллов; более 275 слов — только первые 250 слов. Более 30 % текстуальных совпадений с источником = 0 баллов за задание 38."
+  }
+];
+
+const CRITERIA_CARDS = [
+  {
+    tag: "1 балл", cls: "", tagCls: "",
+    title: "Задания 3–9, 12–36",
+    list: [
+      "Ответ — цифра или слово/несколько слов.",
+      "Должен полностью совпадать с эталоном.",
+      "В бланке слова пишутся без пробелов и знаков препинания.",
+      "Для немецкого языка принимаются umlauts и транслит: ä/ae, ö/oe, ü/ue, ß/ss.",
+      "Аналитические формы из двух слов принимаются без пробела."
+    ]
+  },
+  {
+    tag: "2–3 балла", cls: "warn-card", tagCls: "orange",
+    title: "Задания 1, 2, 10, 11",
+    list: [
+      "Задание 1: 2 балла.",
+      "Задание 2: 3 балла.",
+      "Задание 10: 3 балла.",
+      "Задание 11: 2 балла.",
+      "Каждая ошибка в позиции уменьшает балл на 1, но не ниже 0.",
+      "Если символов больше требуемого — 0 баллов."
+    ]
+  },
+  {
+    tag: "6 баллов", cls: "warn-card", tagCls: "orange",
+    title: "Задание 37 (электронное письмо)",
+    list: [
+      "К1 Решение коммуникативной задачи — 2 балла.",
+      "К2 Организация текста — 2 балла.",
+      "К3 Языковое оформление — 2 балла.",
+      "Объём: 100–140 слов.",
+      "Менее 90 слов — 0 баллов.",
+      "Более 154 слов — проверяются только первые 140 слов."
+    ]
+  },
+  {
+    tag: "14 баллов", cls: "warn-card", tagCls: "orange",
+    title: "Задание 38 (письменное высказывание)",
+    list: [
+      "К1 Решение коммуникативной задачи — 3 балла.",
+      "К2 Организация текста — 3 балла.",
+      "К3 Лексика — 3 балла.",
+      "К4 Грамматика — 3 балла.",
+      "К5 Орфография и пунктуация — 2 балла.",
+      "Объём: 200–250 слов.",
+      "Менее 180 слов — 0 баллов.",
+      "Более 275 слов — проверяются только первые 250 слов.",
+      "Более 30 % текстуальных совпадений с источником — 0 баллов по всему заданию."
+    ]
+  },
+  {
+    tag: "20 баллов", cls: "success-card", tagCls: "green",
+    title: "Устная часть (39–42)",
+    list: [
+      "Задание 1: чтение вслух — 1 балл.",
+      "Задание 2: 4 вопроса — до 4 баллов.",
+      "Задание 3: 5 ответов — до 5 баллов.",
+      "Задание 4: проектное высказывание — до 10 баллов.",
+      "Задание 3: ответ менее 2 фраз — 0 баллов за ответ.",
+      "Задание 4: 7 фраз и менее — 0 баллов."
+    ]
+  }
+];
+
+const CHECKLIST_ITEMS = [
+  "Выучил структуру ЕГЭ-2027 по немецкому языку: 42 задания, 82 балла.",
+  "Отработал чтение вслух немецкого текста и интонацию.",
+  "Повторил артикли der / die / das и падежи.",
+  "Повторил времена: Präsens, Perfekt, Präteritum, Plusquamperfekt, Futur I.",
+  "Повторил модальные глаголы и порядок слов в немецком предложении.",
+  "Повторил separable verbs (отделяемые приставки).",
+  "Повторил Konjunktiv II.",
+  "Повторил Passive.",
+  "Отработал умлауты ä, ö, ü и букву ß.",
+  "Прорешал минимум 5 заданий Richtig / Falsch / Text sagt dazu nichts.",
+  "Прорешал минимум 5 заданий на соответствие (1, 10, 11).",
+  "Отработал аудирование: 6 высказываний, диалог, интервью.",
+  "Отработал чтение: заголовки, пропуски, полное понимание.",
+  "Написал минимум 3 электронных письма (100–140 слов).",
+  "Написал минимум 3 письменных высказывания (200–250 слов).",
+  "Отработал устную часть: чтение вслух, 4 вопроса, интервью, проект.",
+  "Прошёл полный пробник: 190 минут письменная часть + 17 минут устная.",
+  "Повторил ошибки и составил план по слабым темам."
+];
+
+const PLAN_DAYS = [
+  "Диагностика: пробник 190 минут + устная часть.",
+  "Фонетика немецкого языка. Чтение вслух. Умлауты и ß.",
+  "Артикли, род, число, падежи.",
+  "Präsens и Perfekt.",
+  "Präteritum и Plusquamperfekt.",
+  "Futur I, модальные глаголы.",
+  "Отделяемые и неотделяемые приставки.",
+  "Порядок слов в главном и придаточном предложении.",
+  "Konjunktiv II.",
+  "Passiv.",
+  "Относительные придаточные.",
+  "Предлоги с Akkusativ / Dativ.",
+  "Лексика: школа, образование, работа.",
+  "Лексика: путешествия, СМИ, технологии.",
+  "Аудирование: соответствие и Richtig / Falsch / Not stated.",
+  "Аудирование: выбор ответа.",
+  "Чтение: заголовки.",
+  "Чтение: пропуски A–F.",
+  "Чтение: полное понимание.",
+  "Грамматика и лексика: смешанный тренинг 19–36.",
+  "Электронное письмо: структура и клише.",
+  "Письменное высказывание: план и связки.",
+  "Устная часть: диалог-расспрос и интервью.",
+  "Устная часть: монолог-проект.",
+  "Финальный пробник и работа над ошибками."
+];
+
+/* =========================================================
+   ДАННЫЕ ЗАДАНИЙ
+   ========================================================= */
+const SRC_W = "ФИПИ, демоверсия письменной части ЕГЭ-2027 по немецкому языку.";
+const SRC_O = "ФИПИ, демоверсия устной части ЕГЭ-2027 по немецкому языку.";
+
+const LISTENING_INTRO = `Сейчас Вы будете выполнять задания по аудированию. Тексты прозвучат два раза. После каждого прослушивания у Вас будет время для выполнения и проверки заданий.
+Для полноценной тренировки положи файл audio-de.mp3 рядом с этим HTML-файлом.`;
+
+const READING_11_TEXT = `Medienkompetenz in der Schule
+
+Die Klasse 8d aus einer Berliner Schule hatte das Glück, am spannenden Projekt „Tagesspiegel – reflektiert und couragiert“ teilzunehmen. Bei über 100 Bewerbungen wurden A______________________ und sie waren dabei. Das Projekt soll Jugendliche für einen bewussten und kritischen Umgang mit Medien schulen. Teilnehmende Klassen erhalten vom Tagesspiegel umfangreiches Lehrmaterial, kostenfreien Zugang zu Tagesspiegel-Inhalten und die Möglichkeit, B______________________. Außerdem werden Workshops zu Zivilcourage und Berufsorientierung angeboten.
+
+Die Schülerinnen und Schüler der Klasse 8d erhielten auch ein kostenloses Jahresabo des Tagesspiegels und C______________________ wie Algorithmen, Pressefreiheit, Medien in der Demokratie, Cybermobbing und Fake News. Die Schüler haben sogar Podcasts D______________________. Auch die Rolle von künstlicher Intelligenz wurde mit verschiedenen Prompts untersucht. Man hat mögliche Chancen und Risiken besprochen und darüber diskutiert, wo man E______________________ kann.
+
+Der Abschluss des Projekts war ein Workshop bei der BVG (Partner des Projekts) zum Thema Zivilcourage: Hier wurde besprochen, wie man F______________________. Danach haben die Schüler auf dem Betriebshof Lichtenberg in einer leeren Straßenbahn ihr Können bewiesen und viel Spaß dabei gehabt.
+
+1. und Kurzfilme produziert
+2. die Redaktion zu besuchen
+3. sich am besten in Konfliktsituationen verhält
+4. arbeiteten in verschiedenen Modulen zu Themen
+5. eine Partnerschule in der Umgebung aussuchen
+6. die künstliche Intelligenz am besten einsetzen
+7. nur 60 Klassen ausgewählt`;
+
+function makeTask(n, topic, type, accepted, answer, text, info, explanation, source, extra) {
+  const task = {
+    n, topic, scoringType: type,
+    accepted: Array.isArray(accepted) ? accepted.slice() : [accepted],
+    answer,
+    ru: { text, info, explanation, source }
+  };
+  if (extra) Object.assign(task, extra);
+  return task;
+}
+
+const QUIZ = [
+  /* --- АУДИРОВАНИЕ --- */
+  makeTask(1, "listen", "strict-partial", "632571", "632571",
+    "Вы услышите 6 высказываний. Установите соответствие между высказываниями говорящих A–F и утверждениями 1–7. Одно утверждение лишнее. Запишите последовательность цифр без пробелов.",
+    "Задание 1. Максимум 2 балла. Каждая ошибка уменьшает балл на 1, но не ниже 0. Если символов больше 6 — 0 баллов.",
+    "Ключ ФИПИ: A-6, B-3, C-2, D-5, E-7, F-1. Лишнее утверждение — 4. Ответ: 632571.",
+    SRC_W + " Задание 1.",
+    {
+      base: LISTENING_INTRO,
+      matchOptions: [
+        { char: "A", name: "Sprecherin A" }, { char: "B", name: "Sprecherin B" },
+        { char: "C", name: "Sprecher C" }, { char: "D", name: "Sprecherin D" },
+        { char: "E", name: "Sprecher E" }, { char: "F", name: "Sprecherin F" }
+      ],
+      matchQuotes: [
+        { num: 1, text: "Dank dieser Sprache erfahre ich mehr über die antike Welt." },
+        { num: 2, text: "Diese Sprache ist die Brücke zu meiner Heimat." },
+        { num: 3, text: "Das Erlernen dieser Sprache fällt mir schwer, das mag ich aber sehr." },
+        { num: 4, text: "Ich lerne diese Sprache, weil das für meinen Beruf wichtig ist." },
+        { num: 5, text: "Dank Medien fing ich an, diese Sprache zu lernen." },
+        { num: 6, text: "Diese Sprache lässt mich an den Sommer denken." },
+        { num: 7, text: "Diese Sprache macht meine Tage bunt." }
+      ]
+    }
+  ),
+
+  makeTask(2, "listen", "strict-partial", "1231323", "1231323",
+    "Вы услышите диалог. Определите, какие утверждения A–G соответствуют содержанию диалога (1 – Richtig), какие не соответствуют (2 – Falsch) и о чём в диалоге не сказано (3 – Text sagt dazu nichts). Запишите последовательность цифр без пробелов.",
+    "Задание 2. Максимум 3 балла. Каждая ошибка уменьшает балл на 1, но не ниже 0. Если символов больше 7 — 0 баллов.",
+    "Ключ ФИПИ: A-1, B-2, C-3, D-1, E-3, F-2, G-3. Ответ: 1231323.",
+    SRC_W + " Задание 2.",
+    {
+      base: `Lena: Hey Julian! Na, hast du schon Pläne für deine Sommerferien?
+Julian: Hallo Lena! Meine Eltern haben uns dieses Jahr vorgeschlagen, nach Italien zu fahren. Wir wollen dort eine Woche lang Urlaub machen!
+
+(полный диалог — в аудиофайле audio-de.mp3)`,
+      matchOptions: [
+        { char: "A", name: "Julians Familie plant einen Urlaub in Italien." },
+        { char: "B", name: "Julians Bruder Alex träumt davon, durch Italien mit dem Auto zu fahren." },
+        { char: "C", name: "Julian möchte zahlreiche Kunstmuseen in Rom und Florenz besichtigen." },
+        { char: "D", name: "Lena ist von der Insel Mainau begeistert." },
+        { char: "E", name: "Das Festival „Mainau Summer Classics“ findet Anfang September statt." },
+        { char: "F", name: "Lena will ein Buch schreiben, in dem es um ein Mädchen geht, das durch Südamerika reist." },
+        { char: "G", name: "Julian würde gerne Lenas Buch kaufen." }
+      ],
+      matchQuotes: [
+        { num: 1, text: "Richtig" },
+        { num: 2, text: "Falsch" },
+        { num: 3, text: "Text sagt dazu nichts" }
+      ]
+    }
+  ),
+
+  makeTask(3, "listen", "strict", "3", "3",
+    "Was ist das Hauptthema des Romans „Für immer die Alpen“?\n\n1) Eine Reise durch Alpenlandschaften.\n2) Die Alltagsarbeit der Polizisten in Liechtenstein.\n3) Die Einsamkeit eines Mannes in einem fremden Land.",
+    "1 балл. Запиши одну цифру.",
+    "Ключ ФИПИ: 3.",
+    SRC_W + " Задание 3."
+  ),
+
+  makeTask(4, "listen", "strict", "2", "2",
+    "Warum hat der Hauptheld des Romans keine Kontakte zu seiner Familie?\n\n1) Weil er keine Sehnsucht nach seiner Familie hat.\n2) Weil diese Kontakte ihn in Gefahr bringen würden.\n3) Weil er jetzt ein neues Aussehen hat.",
+    "1 балл. Запиши одну цифру.",
+    "Ключ ФИПИ: 2.",
+    SRC_W + " Задание 4."
+  ),
+
+  makeTask(5, "listen", "strict", "3", "3",
+    "Wie kam Herr Quaderer auf die Idee, über Liechtenstein zu schreiben?\n\n1) Weil er viel über Liechtenstein gelesen hat.\n2) Weil das Land sein Lieblingsreiseziel ist.\n3) Weil sich viele Menschen für seine Heimat interessieren.",
+    "1 балл. Запиши одну цифру.",
+    "Ключ ФИПИ: 3.",
+    SRC_W + " Задание 5."
+  ),
+
+  makeTask(6, "listen", "strict", "1", "1",
+    "Wann begann Herr Quaderer seinen ersten Roman zu schreiben?\n\n1) Als er Mitte zwanzig war.\n2) 5 Jahre nach dem Studium.\n3) Während des Studiums.",
+    "1 балл. Запиши одну цифру.",
+    "Ключ ФИПИ: 1.",
+    SRC_W + " Задание 6."
+  ),
+
+  makeTask(7, "listen", "strict", "2", "2",
+    "Nach welcher Methode schreibt Herr Quaderer ein Buch?\n\n1) Er sucht nach Inspiration im Fernsehen und in Filmen.\n2) Ihm ist die Orientierung an realen Personen besonders wichtig.\n3) Er versucht, eine streng strukturierte Anordnung aller Episoden zu schaffen.",
+    "1 балл. Запиши одну цифру.",
+    "Ключ ФИПИ: 2.",
+    SRC_W + " Задание 7."
+  ),
+
+  makeTask(8, "listen", "strict", "3", "3",
+    "Was hilft Herrn Quaderer neue Ideen für sein Buch zu finden?\n\n1) Strategien anderer Autoren.\n2) Regelmäßige Arbeit am Schreibtisch.\n3) Recherchen zum Thema des Buches.",
+    "1 балл. Запиши одну цифру.",
+    "Ключ ФИПИ: 3.",
+    SRC_W + " Задание 8."
+  ),
+
+  makeTask(9, "listen", "strict", "1", "1",
+    "Steckt etwas von Herrn Quaderer selbst in jeder Figur seines Buches?\n\n1) Ja, es passiert automatisch.\n2) Ja, das macht er bewusst.\n3) Nein, weil er sich von Figuren distanziert.",
+    "1 балл. Запиши одну цифру.",
+    "Ключ ФИПИ: 1.",
+    SRC_W + " Задание 9."
+  ),
+
+  /* --- ЧТЕНИЕ --- */
+  makeTask(10, "read", "strict-partial", "5687312", "5687312",
+    "Прочитай тексты A–G и соотнеси их с заголовками 1–8. Один заголовок лишний. Запиши последовательность цифр без пробелов.",
+    "Задание 10. Максимум 3 балла. Каждая ошибка уменьшает балл на 1, но не ниже 0. Если символов больше 7 — 0 баллов.",
+    "Ключ ФИПИ: A-5, B-6, C-8, D-7, E-3, F-1, G-2. Лишний заголовок — 4. Ответ: 5687312.",
+    SRC_W + " Задание 10.",
+    {
+      base: "Тексты A–G см. в официальной демоверсии ФИПИ 2027 по немецкому языку (раздел «Чтение», задание 10).",
+      matchOptions: [
+        { char: "A", name: "Text A" }, { char: "B", name: "Text B" },
+        { char: "C", name: "Text C" }, { char: "D", name: "Text D" },
+        { char: "E", name: "Text E" }, { char: "F", name: "Text F" },
+        { char: "G", name: "Text G" }
+      ],
+      matchQuotes: [
+        { num: 1, text: "Klein, aber schon arbeitsfähig" },
+        { num: 2, text: "Lachen hilft bei der Arbeit" },
+        { num: 3, text: "Kenntnisse sammeln und darüber schreiben" },
+        { num: 4, text: "Geld spielt keine Rolle bei der Arbeit" },
+        { num: 5, text: "Begabungen dank Freiwilligenarbeit nutzen und entdecken" },
+        { num: 6, text: "Dank Freiwilligenarbeit bessere Noten bekommen" },
+        { num: 7, text: "Tiere warten auf unsere Hilfe" },
+        { num: 8, text: "Jeder findet was für eigenen Geschmack" }
+      ]
+    }
+  ),
+
+  makeTask(11, "read", "strict-partial", "724163", "724163",
+    "Прочитай текст и заполни пропуски A–F частями предложений 1–7. Одна часть лишняя. Запиши последовательность цифр без пробелов. В ответе должно быть ровно 6 цифр.",
+    "Задание 11. Максимум 2 балла. Каждая ошибка уменьшает балл на 1, но не ниже 0. Если символов больше 6 — 0 баллов.",
+    "Ключ ФИПИ: A-7, B-2, C-4, D-1, E-6, F-3. Лишняя часть — 5. Ответ: 724163.",
+    SRC_W + " Задание 11.",
+    {
+      base: READING_11_TEXT,
+      matchOptions: [
+        { char: "A", name: "Gap A" }, { char: "B", name: "Gap B" },
+        { char: "C", name: "Gap C" }, { char: "D", name: "Gap D" },
+        { char: "E", name: "Gap E" }, { char: "F", name: "Gap F" }
+      ],
+      matchQuotes: [
+        { num: 1, text: "und Kurzfilme produziert" },
+        { num: 2, text: "die Redaktion zu besuchen" },
+        { num: 3, text: "sich am besten in Konfliktsituationen verhält" },
+        { num: 4, text: "arbeiteten in verschiedenen Modulen zu Themen" },
+        { num: 5, text: "eine Partnerschule in der Umgebung aussuchen" },
+        { num: 6, text: "die künstliche Intelligenz am besten einsetzen" },
+        { num: 7, text: "nur 60 Klassen ausgewählt" }
+      ]
+    }
+  ),
+
+  makeTask(12, "read", "strict", "3", "3",
+    "Was war die frühere Auffassung Nikolaj Sawinkows bezüglich der Wertschätzung eines Kunstwerkes?\n\n1) Das Kunstwerk soll nicht allzu primitiv wirken.\n2) Die Gegenstände müssen nicht gerade preisgünstig sein.\n3) Die Kosten des Materials sind am wichtigsten.\n4) Entscheidend für den Preis ist der Ruf des Künstlers.",
+    "1 балл. Запиши одну цифру.",
+    "Ключ ФИПИ: 3.",
+    SRC_W + " Задание 12."
+  ),
+
+  makeTask(13, "read", "strict", "2", "2",
+    "Was wollte der Kunsthandwerker später den Menschen nahebringen?\n\n1) Kleine Betriebe sind für die Kunstschaffenden am günstigsten.\n2) Das Können des Künstlers ist ausschlaggebend.\n3) Je älter und erfahrener der Meister ist, desto attraktiver ist sein Produkt.\n4) Echte Handwerkskunst soll im Schmuckverkauf nicht angeboten werden.",
+    "1 балл. Запиши одну цифру.",
+    "Ключ ФИПИ: 2.",
+    SRC_W + " Задание 13."
+  ),
+
+  makeTask(14, "read", "strict", "2", "2",
+    "Wie ist der typische Arbeitszyklus des Künstlers?\n\n1) Die Kunden stellen Sawinkow ihre eigenen Ideen vor, die der Meister in Kunstwerke umsetzt.\n2) Der Künstler entwickelt neue Muster nach seinem Konzept und verschickt sie an die Interessenten.\n3) Der Kunsthandwerker macht Werbung in Netzwerken, dann arbeitet er vertragsgemäß.\n4) Er studiert vorhandene Muster in zahlreichen Quellen, dann erstellt er seinen eigenen Entwurf.",
+    "1 балл. Запиши одну цифру.",
+    "Ключ ФИПИ: 2.",
+    SRC_W + " Задание 14."
+  ),
+
+  makeTask(15, "read", "strict", "4", "4",
+    "Warum ist jedes Kunstwerk von Sawinkow ein Unikat?\n\n1) Weil er niemals Kopien von seinen Werken anfertigt.\n2) Weil Kopieren ihm nicht so gut gelingt.\n3) Weil kein anderer seine Werke so detailliert gestaltet.\n4) Weil alle seine Erzeugnisse von Hand gefertigt sind.",
+    "1 балл. Запиши одну цифру.",
+    "Ключ ФИПИ: 4.",
+    SRC_W + " Задание 15."
+  ),
+
+  makeTask(16, "read", "strict", "3", "3",
+    "Was zeichnet den Arbeitsprozess des Künstlers aus?\n\n1) Ein Team, das kreativ und hilfreich ist, macht bei allen Arbeiten mit.\n2) Logistikaufgaben übernehmen Spezialisten, die seit Jahren mit dabei sind.\n3) In der Endphase arbeitet er immer allein an seinen Kunstwerken.\n4) Für technische Beratung stehen dem Meister Ingenieure zur Verfügung.",
+    "1 балл. Запиши одну цифру.",
+    "Ключ ФИПИ: 3. «Bei der finalen Bearbeitung des Metalls in der Werkstatt ist Sawinkow auf sich allein gestellt».",
+    SRC_W + " Задание 16."
+  ),
+
+  makeTask(17, "read", "strict", "4", "4",
+    "Warum vergleicht der Kunsthandwerker seine Arbeit mit der eines Steinhauers?\n\n1) Weil dabei intensiver Krafteinsatz erforderlich ist.\n2) Weil es in diesen Berufen viel Routinearbeit gibt.\n3) Weil es bei der Tätigkeit der beiden um Kreativität geht.\n4) Weil beim geringsten Fehler das Werk kaputtgeht.",
+    "1 балл. Запиши одну цифру.",
+    "Ключ ФИПИ: 4. «Ein bisschen zu viel Krafteinsatz und das ganze Kunstwerk ist hin».",
+    SRC_W + " Задание 17."
+  ),
+
+  makeTask(18, "read", "strict", "3", "3",
+    "Wie begründet Nikolaj Sawinkow die Wahl seiner Stilrichtung?\n\n1) Der Steampunk ist eine Stilrichtung, die voll Gegensätze ist.\n2) Man hat ihn rein zufällig auf die Schönheit des Steampunks aufmerksam gemacht.\n3) Er will etwas schaffen, was unvergänglich wäre.\n4) Der Steampunk ist im Moment die populärste Stilrichtung.",
+    "1 балл. Запиши одну цифру.",
+    "Ключ ФИПИ: 3.",
+    SRC_W + " Задание 18."
+  ),
+
+  /* --- ГРАММАТИКА И ЛЕКСИКА --- */
+  makeTask(19, "gram", "word", ["geworden", "gewordendem"], "geworden / gewordendem",
+    "Задание 19. Преобразуйте слово WERDEN так, чтобы оно грамматически соответствовало тексту «Störche».",
+    "1 балл. В бланке пишется без пробелов.",
+    "Ключ ФИПИ: geworden. Также принимается аналитическая форма geworden dem (слитно: gewordendem).",
+    SRC_W + " Задание 19."
+  ),
+
+  makeTask(20, "gram", "word", ["der", "dergeschenkt"], "der / dergeschenkt",
+    "Задание 20. Преобразуйте слово DIE так, чтобы оно грамматически соответствовало тексту.",
+    "1 балл. Родительный падеж.",
+    "Ключ ФИПИ: der. Также принимается der geschenkt (слитно: dergeschenkt).",
+    SRC_W + " Задание 20."
+  ),
+
+  makeTask(21, "gram", "word", ["will", "willbesser"], "will / willbesser",
+    "Задание 21. Преобразуйте слово WOLLEN так, чтобы оно грамматически соответствовало тексту.",
+    "1 балл. 3-е лицо единственного числа.",
+    "Ключ ФИПИ: will. Также принимается will besser (слитно: willbesser).",
+    SRC_W + " Задание 21."
+  ),
+
+  makeTask(22, "gram", "word", ["seiner", "seinerfächer", "seinerfaecher"], "seiner / seinerfächer",
+    "Задание 22. Преобразуйте слово SEIN / FACH так, чтобы оно грамматически соответствовало тексту.",
+    "1 балл. Притяжательное местоимение.",
+    "Ключ ФИПИ: seiner Fächer. Принимается также транслит: seiner Faecher.",
+    SRC_W + " Задание 22."
+  ),
+
+  makeTask(23, "gram", "word", ["musste", "demmusste"], "musste / demmusste",
+    "Задание 23. Преобразуйте слово MÜSSEN так, чтобы оно грамматически соответствовало тексту.",
+    "1 балл. Präteritum.",
+    "Ключ ФИПИ: musste. Также принимается dem musste (слитно: demmusste).",
+    SRC_W + " Задание 23."
+  ),
+
+  makeTask(24, "gram", "word", ["ihnen", "mehrihnen"], "ihnen / mehrihnen",
+    "Задание 24. Преобразуйте слово SIE так, чтобы оно грамматически соответствовало тексту.",
+    "1 балл. Dativ.",
+    "Ключ ФИПИ: ihnen. Также принимается mehr ihnen (слитно: mehrihnen).",
+    SRC_W + " Задание 24."
+  ),
+
+  makeTask(25, "gram", "word", ["romantischen"], "Romantischen",
+    "Задание 25. Образуй нужную словоформу от ROMANTISCH (тема «Rothenburg ob der Tauber»).",
+    "1 балл.",
+    "Ключ ФИПИ: Romantischen.",
+    SRC_W + " Задание 25."
+  ),
+
+  makeTask(26, "gram", "word", ["nähe", "naehe"], "Nähe / Naehe",
+    "Задание 26. Образуй существительное от NAH (близость).",
+    "1 балл. Можно вводить Nähe или Naehe.",
+    "Ключ ФИПИ: Nähe.",
+    SRC_W + " Задание 26."
+  ),
+
+  makeTask(27, "gram", "word", ["ausstellung"], "Ausstellung",
+    "Задание 27. Образуй существительное от AUSSTELLEN.",
+    "1 балл.",
+    "Ключ ФИПИ: Ausstellung.",
+    SRC_W + " Задание 27."
+  ),
+
+  makeTask(28, "gram", "word", ["ermäßigung", "ermassigung"], "Ermäßigung / Ermassigung",
+    "Задание 28. Образуй существительное от ERMÄSSIGEN.",
+    "1 балл. Можно вводить Ermäßigung или Ermassigung.",
+    "Ключ ФИПИ: Ermäßigung.",
+    SRC_W + " Задание 28."
+  ),
+
+  makeTask(29, "gram", "word", ["besucher", "besuche"], "Besucher / Besuche",
+    "Задание 29. Образуй существительное от BESUCHEN.",
+    "1 балл. Допускаются варианты Besucher или Besuche.",
+    "Ключ ФИПИ: Besucher; Besuche.",
+    SRC_W + " Задание 29."
+  ),
+
+  makeTask(30, "gram", "strict", "1", "1",
+    "Fjodor Wolkow war ein reicher Kaufmann, der von der Schauspielkunst so begeistert war, dass er all seine Geschäfte 30 ______ und sein eigenes Theater gründete.\n\n1) aufgab\n2) angab\n3) übergab\n4) abgab",
+    "1 балл. Запиши одну цифру.",
+    "Ключ ФИПИ: 1 (aufgab).",
+    SRC_W + " Задание 30."
+  ),
+
+  makeTask(31, "gram", "strict", "1", "1",
+    "Obwohl die Kaiserin den Künsten besondere Aufmerksamkeit 31 ______, gab jedoch zufällig ein einfacher Kaufmann aus der Provinzstadt Jaroslawl den Anstoß für die Entwicklung des Schauspieltheaters.\n\n1) schenkte\n2) verdankte\n3) widmete\n4) machte",
+    "1 балл. Запиши одну цифру.",
+    "Ключ ФИПИ: 1 (schenkte).",
+    SRC_W + " Задание 31."
+  ),
+
+  makeTask(32, "gram", "strict", "3", "3",
+    "Sie 32 ______ in einer Scheune auf und hatten großen Erfolg beim örtlichen Publikum.\n\n1) hielten\n2) stellten\n3) traten\n4) standen",
+    "1 балл. Запиши одну цифру.",
+    "Ключ ФИПИ: 3 (traten). Глагол auftreten — выступать.",
+    SRC_W + " Задание 32."
+  ),
+
+  makeTask(33, "gram", "strict", "1", "1",
+    "Gerüchte über diese Inszenierungen drangen bis zur Kaiserin, und 1752 gab Wolkows Truppe auf ihre Einladung hin 33 ______ in Zarskoje Selo.\n\n1) Vorstellungen\n2) Darstellungen\n3) Ausstellungen\n4) Aufstellungen",
+    "1 балл. Запиши одну цифру.",
+    "Ключ ФИПИ: 1 (Vorstellungen).",
+    SRC_W + " Задание 33."
+  ),
+
+  makeTask(34, "gram", "strict", "1", "1",
+    "Die Kaiserin verlieh ihm einen Adelstitel und 34 ______ ihm ein Gehalt.\n\n1) gewährte\n2) gab\n3) schenkte\n4) bot",
+    "1 балл. Запиши одну цифру.",
+    "Ключ ФИПИ: 1 (gewährte).",
+    SRC_W + " Задание 34."
+  ),
+
+  makeTask(35, "gram", "strict", "2", "2",
+    "Fjodor Wolkow schrieb auch seine eigenen Stücke und war als Bühnenbildner 35 ______.\n\n1) fähig\n2) tätig\n3) fertig\n4) willig",
+    "1 балл. Запиши одну цифру.",
+    "Ключ ФИПИ: 2 (tätig).",
+    SRC_W + " Задание 35."
+  ),
+
+  makeTask(36, "gram", "strict", "2", "2",
+    "Der Legende nach erkältete sich Wolkow während der Maskerade. 36 ______ davon nicht mehr und starb kurz darauf.\n\n1) genoss\n2) erholte\n3) bekam\n4) erlebte",
+    "1 балл. Запиши одну цифру.",
+    "Ключ ФИПИ: 2 (erholte). Речь о глаголе sich erholen von.",
+    SRC_W + " Задание 36."
+  ),
+
+  /* --- ПИСЬМО --- */
+  makeTask(37, "write", "part2", [], "См. критерии ФИПИ",
+    "Sie haben eine E-Mail von Ihrem deutschen Brieffreund Sven bekommen.\n\n...Ich mache eine Recherche über den Tag des Sieges – wie er in verschiedenen Ländern gefeiert wird. Nun möchte ich ein paar Fragen dazu an dich stellen. Wie wird der Tag des Sieges in Russland normalerweise gefeiert? Sind besondere Rituale, Traditionen oder Veranstaltungen mit diesem Fest verbunden? Was bedeutet der Tag des Sieges für dich persönlich und für deine Familie?\n...Am Samstag fand das letzte Fußballspiel unseres Schulteams statt...\n\nSchreiben Sie eine E-Mail, in der Sie:\n— die Fragen von Sven beantworten;\n— 3 Fragen zum Fußballspiel formulieren.\n\nDie E-Mail soll 100–140 Wörter enthalten.",
+    "6 баллов: К1 — 2, К2 — 2, К3 — 2.\nОбъём: 100–140 слов.\nМенее 90 слов — 0 баллов.\nБолее 154 слов — проверяются только первые 140 слов.",
+    "Проверь приветствие, благодарность, ответы на 3 вопроса, 3 вопроса к другу и завершительную фразу.",
+    SRC_W + " Задание 37."
+  ),
+
+  makeTask(38, "write", "part2", [], "См. критерии ФИПИ",
+    "Выбери ОДНО из двух заданий (38.1 или 38.2) и напиши письменное высказывание с элементами рассуждения (200–250 слов).\n\n38.1. Проект «Lebensbedingungen in Großstädten in Zetland». Таблица: Luft sauberer (32 %), Lärmbelastung reduzieren (23 %), Mehr Bäume pflanzen (20 %), Mehr Fahrradwege (14 %), Zahl der Autos reduzieren (11 %).\n\n38.2. Проект «Kommunikation mit und unter Freunden in Zetland». Диаграмма: Weit voneinander entfernt (34 %), Wenig Freizeit (26 %), Neue Freunde gefunden (20 %), Konflikte in der Vergangenheit (11 %), Verschiedene Interessen (9 %).",
+    "14 баллов: К1 — 3, К2 — 3, К3 — 3, К4 — 3, К5 — 2.\nОбъём: 200–250 слов.\nМенее 180 слов — 0 баллов.\nБолее 275 слов — проверяются только первые 250 слов.\nБолее 30 % текстуальных совпадений с источником — 0 баллов по всему заданию.",
+    "Соблюдай план: введение — 2–3 факта — сравнение — проблема и решение — заключение с мнением. Нейтральный стиль, абзацы, связки.",
+    SRC_W + " Задание 38."
+  ),
+
+  /* --- УСТНАЯ ЧАСТЬ --- */
+  makeTask(39, "speak", "part2", [], "Максимум 1 балл",
+    "Устная часть, задание 1. Прочитай текст вслух (Die Loreley). Время на подготовку — 1,5 минуты.",
+    "1 балл. Критерий: фонетическая сторона речи. Допускается не более 5 фонетических ошибок, в том числе 1–2 искажающие смысл.",
+    "Читай текст целиком, соблюдая немецкую интонацию, ударения и паузы.",
+    SRC_O + " Задание 1.",
+    {
+      base: "Впиши официальный текст задания 1 устной части из демоверсии ФИПИ 2027 по немецкому языку (Die Loreley) и прочитай его вслух."
+    }
+  ),
+
+  makeTask(40, "speak", "part2", [], "Максимум 4 балла",
+    "Устная часть, задание 2. Ты решил принять участие в кулинарном мастер-классе «Mit uns lernen Sie lecker kochen!». Задай 4 прямых вопроса, чтобы узнать:\n1) Ort des Workshops;\n2) Dauer des Workshops;\n3) Preis des Workshops;\n4) Gerichte.",
+    "До 4 баллов. Каждый вопрос оценивается отдельно.",
+    "Ориентир:\n1) Wo findet der Workshop statt?\n2) Wie lange dauert der Workshop?\n3) Was kostet der Workshop?\n4) Welche Gerichte kann man dort kochen?",
+    SRC_O + " Задание 2."
+  ),
+
+  makeTask(41, "speak", "part2", [], "Максимум 5 баллов",
+    "Устная часть, задание 3. Ты даёшь интервью. Ответь на 5 вопросов интервьюера. Каждый ответ — 2–3 фразы.\n\n1) Wie oft essen Sie Obst und Gemüse pro Tag?\n2) Gehen Sie regelmäßig zum Arzt?\n3) Tun Sie genug für Ihre Gesundheit? Warum?\n4) Was machen Sie gegen den Schulstress?\n5) Wie wichtig ist das Vorbild der Eltern, um den Kindern gesunde Lebensweise beizubringen?",
+    "До 5 баллов. Ответ менее 2 фраз — 0 баллов за ответ.",
+    "Строй полные ответы: утверждение + пояснение + пример/оценка.",
+    SRC_O + " Задание 3.",
+    {
+      base: "Аудио с вопросами интервьюера — в файле audio-de-oral.mp3."
+    }
+  ),
+
+  makeTask(42, "speak", "part2", [], "Максимум 10 баллов",
+    "Устная часть, задание 4. Проект «Allein oder in Gesellschaft». Обоснуй выбор двух фотографий-иллюстраций к проектной работе и вырази собственное мнение.\n\nОбъём: 12–15 фраз.",
+    "До 10 баллов. 7 фраз и менее — 0 баллов.",
+    "Строй монолог: введение — описание фото — сравнение — преимущества/недостатки — своё мнение — заключение.",
+    SRC_O + " Задание 4."
+  )
+];
+
+/* =========================================================
+   РЕНДЕР
+   ========================================================= */
+function renderCards(containerId, cards) {
+  const grid = document.getElementById(containerId);
+  if (!grid) return;
+  grid.innerHTML = cards.map(card => {
+    let html = '<div class="card ' + (card.cls || "") + '">';
+    html += '<span class="tag ' + (card.tagCls || "") + '">' + esc(card.tag) + "</span>";
+    html += "<h3>" + esc(card.title) + "</h3>";
+    if (card.list) {
+      html += '<ul class="mini-list">' + card.list.map(i => "<li>" + esc(i) + "</li>").join("") + "</ul>";
+    } else if (card.text) {
+      html += "<p>" + esc(card.text) + "</p>";
+    }
+    html += "</div>";
+    return html;
+  }).join("");
+}
+
+function renderChecklist() {
+  const ul = document.getElementById("checklistUl");
+  if (!ul) return;
+  ul.innerHTML = CHECKLIST_ITEMS.map((item, index) => {
+    const id = "ch" + (index + 1);
+    const done = checklistState[id] ? "done" : "";
+    const checked = checklistState[id] ? "checked" : "";
+    return '<li class="check-item ' + done + '">' +
+      '<input id="' + id + '" type="checkbox" ' + checked + ' onchange="onChecklistChange(this)">' +
+      '<label for="' + id + '">' + esc(item) + "</label>" +
+    "</li>";
+  }).join("");
+}
+
+function onChecklistChange(input) {
+  checklistState[input.id] = input.checked;
+  input.parentElement.classList.toggle("done", input.checked);
+  updateChecklistProgress();
+  updateStats();
+}
+
+function updateChecklistProgress() {
+  const total = CHECKLIST_ITEMS.length;
+  const done = Object.values(checklistState).filter(Boolean).length;
+  const pct = total ? Math.round((done / total) * 100) : 0;
+  const el = document.getElementById("checklistProgress");
+  if (el) el.textContent = pct + "%";
+  const overall = document.getElementById("overall");
+  if (overall) {
+    const s = getStats();
+    overall.value = Math.round(((s.answered / s.total) * 100 + pct) / 2);
+  }
+}
+
+function renderPlan() {
+  const grid = document.getElementById("planGrid");
+  if (!grid) return;
+  grid.innerHTML = PLAN_DAYS.map((day, index) => {
+    const dayNum = index + 1;
+    const critical = [1, 14, 19, 23, 25].includes(dayNum);
+    return '<div class="day ' + (critical ? "critical" : "") + '"><b>День ' + dayNum + "</b><span>" + esc(day) + "</span></div>";
+  }).join("");
+}
+
+/* =========================================================
+   НОРМАЛИЗАЦИЯ
+   ========================================================= */
+function normalizeWordAnswer(s) {
+  return String(s || "")
+    .toLowerCase()
+    .replace(/ß/g, "ss")
+    .replace(/ä/g, "a")
+    .replace(/ö/g, "o")
+    .replace(/ü/g, "u")
+    .replace(/ae/g, "a")
+    .replace(/oe/g, "o")
+    .replace(/ue/g, "u")
+    .replace(/[\u2018\u2019']/g, "")
+    .replace(/[^a-z0-9]/g, "");
+}
+
+function normalizeDigits(s) {
+  return String(s || "").replace(/\D/g, "");
+}
+
+function scoreSequence(userAnswer, key, maxScore) {
+  const user = normalizeDigits(userAnswer);
+  const correct = normalizeDigits(key);
+  if (!correct) return 0;
+  if (user.length !== correct.length) return 0;
+  let mistakes = 0;
+  for (let i = 0; i < correct.length; i++) {
+    if (user[i] !== correct[i]) mistakes++;
+  }
+  return Math.max(0, maxScore - mistakes);
+}
+
+function countGermanWords(text) {
+  const normalized = String(text || "").replace(/[\u2018\u2019]/g, "'");
+  const matches = normalized.match(/[A-Za-zÄÖÜäöüß0-9]+(?:[-'][A-Za-zÄÖÜäöüß0-9]+)*/g);
+  return matches ? matches.length : 0;
+}
+
+function truncateWords(text, limit) {
+  return String(text || "").trim().split(/\s+/).filter(Boolean).slice(0, limit).join(" ");
+}
+
+function countPhrases(text) {
+  return String(text || "")
+    .split(/[.!?]+/)
+    .map(part => part.trim())
+    .filter(part => /[A-Za-zÄÖÜäöüß]/.test(part))
+    .length;
+}
+
+/* =========================================================
+   АВТОПРОВЕРКА 37–42
+   ========================================================= */
+function gradePart2(n, raw) {
+  const text = String(raw || "");
+  const words = countGermanWords(text);
+  const lower = text.toLowerCase();
+
+  if (n === 37) {
+    if (words < 90) return 0;
+    const checked = words > 154 ? truncateWords(text, 140) : text;
+    const l = checked.toLowerCase();
+    let score = 0;
+    if (/hallo|liebe|lieber|guten tag|du/.test(l)) score++;
+    if (/danke|vielen dank|schön|freut|nachricht|email/.test(l)) score++;
+    if (/sieg|1945|krieg|parade|feuerwerk|familie|russland/.test(l)) score++;
+    const questions = (checked.match(/\?/g) || []).length;
+    if (questions >= 3) score += 2;
+    else if (questions >= 1) score += 1;
+    if (/tschüss|bis bald|schreib zurück|deine|dein|viele grüße/.test(l)) score++;
+    return Math.min(6, score);
+  }
+
+  if (n === 38) {
+    if (words < 180) return 0;
+    const checked = words > 275 ? truncateWords(text, 250) : text;
+    const l = checked.toLowerCase();
+    let score = 0;
+    if (/tabelle|diagramm|umfrage|respondenten|daten|untersuchung|zetland/.test(l)) score += 2;
+    if (/man kann sehen|laut|gemäß|zum beispiel|jedoch|aber|deshalb|daher/.test(l)) score += 2;
+    if (/zusammenfassend|abschließend|meiner meinung nach|ich denke|ich glaube/.test(l)) score += 2;
+    if (/problem|lösung|vorteil|nachteil|chance|risiko/.test(l)) score += 2;
+    if (countPhrases(checked) >= 5) score += 2;
+    if (words >= 200 && words <= 250) score += 2;
+    return Math.min(14, score);
+  }
+
+  if (n === 39) return words > 30 ? 1 : 0;
+
+  if (n === 40) {
+    const questions = (text.match(/\?/g) || []).length;
+    return Math.min(4, questions);
+  }
+
+  if (n === 41) {
+    const phrases = countPhrases(text);
+    if (phrases >= 10) return 5;
+    if (phrases >= 6) return 3;
+    if (phrases >= 2) return 1;
+    return 0;
+  }
+
+  if (n === 42) {
+    const phrases = countPhrases(text);
+    if (phrases <= 7) return 0;
+    let score = phrases >= 12 ? 8 : phrases >= 10 ? 6 : 4;
+    if (/foto|fotos|bild|bilder|projekt/.test(lower)) score++;
+    if (/allein|gesellschaft|gruppe|freunde|zusammen|einsam|reise|reisen|urlaub|zug|auto|flugzeug/.test(lower)) score++;
+    if (/vorteil|vorteile|nachteil|nachteile|chance|risiko/.test(lower)) score++;
+    if (/meiner meinung|ich bevorzuge|ich würde|persönlich/.test(lower)) score++;
+    return Math.min(10, score);
+  }
+
+  return 0;
+}
+
+/* =========================================================
+   ВЁРСТКА ТРЕНАЖЁРА
+   ========================================================= */
+function listeningSectionHtml() {
+  return '' +
+    '<div class="audio-section" id="listeningAudioSection">' +
+      '<span class="audio-section-tag">🎧 Раздел 1. Аудирование</span>' +
+      '<h3 class="audio-section-title">Аудиозапись для заданий 1–9 — <code>audio-de.mp3</code></h3>' +
+      '<p class="audio-section-note">На экзамене запись звучит дважды. Положи файл <code>audio-de.mp3</code> рядом с HTML-файлом.</p>' +
+      '<div class="q-audio"><audio id="mainAudio" controls preload="metadata" src="audio-de.mp3"></audio></div>' +
+      '<div class="audio-error">⚠️ Ошибка загрузки аудио. Убедись, что файл называется audio-de.mp3.</div>' +
+      '<p style="margin:8px 0 0;color:var(--muted);font-size:13px;">⏱ Рекомендуемое время на раздел — 30 минут.</p>' +
+    '</div>';
+}
+
+function oralSectionHtml() {
+  return '' +
+    '<div class="audio-section oral" id="oralAudioSection">' +
+      '<span class="audio-section-tag">🎤 Устная часть · задание 3</span>' +
+      '<h3 class="audio-section-title">Интервью — <code>audio-de-oral.mp3</code></h3>' +
+      '<p class="audio-section-note" style="color:#d8ccff;">Положи файл <code>audio-de-oral.mp3</code> рядом с HTML-файлом.</p>' +
+      '<div class="q-audio"><audio id="oralAudio" controls preload="metadata" src="audio-de-oral.mp3"></audio></div>' +
+      '<div class="audio-error">⚠️ Ошибка загрузки аудио. Убедись, что файл называется audio-de-oral.mp3.</div>' +
+    '</div>';
+}
+
+function renderQuiz() {
+  const container = document.getElementById("quizContainer");
+  if (!container) return;
+
+  let html = "";
+
+  if (currentFilter === "all" || currentFilter === "listen") {
+    html += listeningSectionHtml();
+  }
+
+  QUIZ.forEach(task => {
+    if (currentFilter !== "all" && task.topic !== currentFilter) return;
+
+    if (task.n === 41 && (currentFilter === "all" || currentFilter === "speak")) {
+      html += oralSectionHtml();
+    }
+
+    const data = task.ru;
+    const type = SCORING_TYPES[task.n];
+    const isShort = type === "word" || type === "strict" || type === "strict-partial";
+
+    html += '<div class="question-block" id="q' + task.n + '">';
+    html += '<div><span class="' + topicClass(task.topic) + '">' + esc(topicLabel(task.topic)) + ' · задание ' + task.n + '</span></div>';
+    html += '<div style="margin:0 0 14px;text-align:right;color:var(--muted);font-size:13px;">макс. ' + WEIGHTS[task.n] + ' б.</div>';
+
+    if (task.base) {
+      html += '<details class="q-base"><summary>Открыть текст / материал задания</summary><div class="q-base-content">' + esc(task.base) + "</div></details>";
+    }
+
+    if (task.matchOptions && task.matchQuotes) {
+      html += '<div class="match-grid">';
+      html += "<div><h4>Левый список</h4><ul>";
+      task.matchOptions.forEach(o => {
+        html += "<li><b>" + esc(o.char) + ")</b> " + esc(o.name) + "</li>";
+      });
+      html += "</ul></div>";
+      html += "<div><h4>Правый список</h4><ul>";
+      task.matchQuotes.forEach(q => {
+        html += "<li><b>" + q.num + ")</b> " + esc(q.text) + "</li>";
+      });
+      html += "</ul></div></div>";
+    }
+
+    html += '<div class="q-part"><span class="q-part-label">1. Вопрос</span><div class="q-text">' + esc(data.text) + "</div></div>";
+    html += '<div class="q-info"><span class="q-part-label" style="color:#d8ccff;">2. Что проверяет задание и как думать</span><p style="margin:0;">' + esc(data.info) + "</p></div>";
+    html += '<div class="q-part"><span class="q-part-label">3. Тренажёр — введи ответ</span>';
+
+    if (isShort) {
+      html += '<div class="answer-row">';
+      html += '<input id="input-' + task.n + '" class="answer-input" type="text" placeholder="Введите цифру, слово или последовательность цифр" autocomplete="off" spellcheck="false" />';
+      html += '<button class="btn small" type="button" onclick="checkTask(' + task.n + ')">Проверить</button>';
+      html += "</div>";
+    } else {
+      const isEssay = task.n === 37 || task.n === 38;
+      html += '<textarea id="input-' + task.n + '" class="answer-input' + (isEssay ? ' essay' : '') + '" placeholder="Введите развёрнутый ответ"></textarea>';
+      if (task.n === 37 || task.n === 38) {
+        html += '<div class="word-counter" id="wc-' + task.n + '">Слов: <b>0</b> (норма: ' + (task.n === 37 ? '100–140' : '200–250') + ')</div>';
+      }
+      html += '<div style="margin-top:10px;"><button class="btn small" type="button" onclick="checkTask(' + task.n + ')">Проверить</button></div>';
+    }
+
+    html += "</div>";
+    html += '<div id="result-' + task.n + '" class="result-block"></div>';
+    html += "</div>";
+  });
+
+  container.innerHTML = html;
+
+  /* Audio error handling */
+  document.querySelectorAll(".audio-section audio").forEach(audio => {
+    audio.addEventListener("error", function () {
+      const err = this.parentElement.parentElement.querySelector(".audio-error");
+      if (err) err.style.display = "block";
+    });
+  });
+
+  /* Если включён режим показа ключей */
+  if (showAllKeys) {
+    QUIZ.forEach(task => {
+      if (currentFilter === "all" || task.topic === currentFilter) {
+        showKey(task.n);
+      }
+    });
+  }
+}
+
+function updateWordCounter(n) {
+  const el = document.getElementById("input-" + n);
+  const wc = document.getElementById("wc-" + n);
+  if (!el || !wc) return;
+  const words = countGermanWords(el.value);
+  const min = n === 37 ? 100 : 200;
+  const max = n === 37 ? 140 : 250;
+  let color = "var(--muted)";
+  if (words < min) color = "var(--red)";
+  else if (words > max) color = "var(--orange)";
+  else color = "var(--green)";
+  wc.innerHTML = 'Слов: <b style="color:' + color + '">' + words + '</b> (норма: ' + min + '–' + max + ')';
+}
+
+/* =========================================================
+   ПРОВЕРКА
+   ========================================================= */
+function checkTask(n) {
+  const task = QUIZ.find(item => item.n === n);
+  const input = document.getElementById("input-" + n);
+  const box = document.getElementById("result-" + n);
+  if (!task || !input || !box) return;
+
+  const raw = input.value;
+  const type = SCORING_TYPES[n];
+  const max = WEIGHTS[n];
+
+  let score = 0;
+  let correct = false;
+
+  if (type === "strict-partial") {
+    score = scoreSequence(raw, task.accepted[0], max);
+    correct = score === max;
+  } else if (type === "strict" || type === "word") {
+    const user = normalizeWordAnswer(raw);
+    const ok = task.accepted.some(a => normalizeWordAnswer(a) === user);
+    score = ok ? 1 : 0;
+    correct = ok;
+  } else {
+    score = gradePart2(n, raw);
+    correct = score === max;
+  }
+
+  /* Всё хранится только в памяти страницы — при обновлении исчезнет */
+  savedAnswers[n] = { score, correct, raw };
+
+  input.classList.remove("correct", "wrong", "partial");
+  if (score === max) input.classList.add("correct");
+  else if (score > 0) input.classList.add("partial");
+  else input.classList.add("wrong");
+
+  showResult(task, score, max, correct);
+  updateStats();
+}
+
+function showResult(task, score, max, correct) {
+  const box = document.getElementById("result-" + task.n);
+  if (!box) return;
+  const cls = correct ? "correct" : score > 0 ? "partial" : "wrong";
+  const verdict = correct ? "✅ Правильно!" : score > 0 ? "⚠️ Частично верно" : "❌ Неправильно.";
+  const answerText = typeof task.answer === "object" ? (task.answer.ru || "") : task.answer;
+  const approxNote = (task.topic === "write" || task.topic === "speak")
+    ? '<div class="source-row" style="color:var(--orange);"><strong>⚠️ Автопроверка развёрнутых заданий приблизительная. Итоговый балл определяется экспертами по критериям ФИПИ.</strong></div>'
+    : "";
+
+  box.className = "result-block " + cls;
+  box.style.display = "block";
+  box.innerHTML =
+    '<div class="verdict ' + cls + '">' + esc(verdict) + "</div>" +
+    '<div class="result-row"><strong>Ориентир:</strong> ' + esc(answerText) + "</div>" +
+    '<div class="result-row"><strong>Баллов:</strong> ' + score + "/" + max + "</div>" +
+    '<div class="result-row"><strong>Пояснение:</strong> ' + esc(task.ru.explanation || "") + "</div>" +
+    '<div class="source-row"><strong>Источник:</strong> ' + esc(task.ru.source || "") + "</div>" +
+    approxNote;
+}
+
+function showKey(n) {
+  const task = QUIZ.find(item => item.n === n);
+  if (!task) return;
+  const box = document.getElementById("result-" + n);
+  if (!box) return;
+  const answerText = typeof task.answer === "object" ? (task.answer.ru || "") : task.answer;
+  box.className = "result-block partial";
+  box.style.display = "block";
+  box.innerHTML =
+    '<div class="verdict partial">🔑 Ключ</div>' +
+    '<div class="result-row"><strong>Правильный ответ:</strong> ' + esc(answerText) + "</div>" +
+    '<div class="result-row"><strong>Пояснение:</strong> ' + esc(task.ru.explanation || "") + "</div>" +
+    '<div class="source-row"><strong>Источник:</strong> ' + esc(task.ru.source || "") + "</div>";
+}
+
+function toggleKeys() {
+  showAllKeys = !showAllKeys;
+  const btn = document.getElementById("keysToggle");
+  if (btn) btn.textContent = showAllKeys ? "🙈 Скрыть ключи" : "👁 Показать все ключи";
+  if (showAllKeys) {
+    QUIZ.forEach(task => {
+      if (currentFilter === "all" || task.topic === currentFilter) showKey(task.n);
+    });
+  } else {
+    QUIZ.forEach(task => {
+      const box = document.getElementById("result-" + task.n);
+      if (box) { box.style.display = "none"; box.innerHTML = ""; }
+    });
+    Object.keys(savedAnswers).forEach(k => {
+      const n = parseInt(k, 10);
+      const task = QUIZ.find(t => t.n === n);
+      const s = savedAnswers[k];
+      if (task && s) showResult(task, s.score, WEIGHTS[n], s.correct);
+    });
+  }
+}
+
+/* =========================================================
+   СТАТИСТИКА
+   ========================================================= */
+function getStats() {
+  let answered = 0, correct = 0, score = 0;
+  const maxScore = Object.values(WEIGHTS).reduce((a, b) => a + b, 0);
+  QUIZ.forEach(task => {
+    const s = savedAnswers[task.n];
+    if (s) {
+      answered++;
+      score += s.score || 0;
+      if (s.correct) correct++;
+    }
+  });
+  return { total: TOTAL_TASKS, answered, correct, score, maxScore };
+}
+
+function updateStats() {
+  const s = getStats();
+  const a = document.getElementById("answeredCount");
+  const c = document.getElementById("correctCount");
+  if (a) a.textContent = s.answered + "/" + s.total;
+  if (c) c.textContent = s.correct + "/" + s.total;
+  updateChecklistProgress();
+  renderSummary();
+}
+
+function renderSummary() {
+  const box = document.getElementById("summaryBox");
+  if (!box) return;
+  const s = getStats();
+  const pct = s.maxScore ? Math.round((s.score / s.maxScore) * 100) : 0;
+
+  if (s.answered < s.total) {
+    box.innerHTML =
+      '<div class="summary"><div class="score">' + s.score + "/" + s.maxScore + "</div>" +
+      '<p style="margin:8px 0;">Пройдено блоков: <strong>' + s.answered + "</strong> из " + s.total + "</p>" +
+      '<p style="color:#9aa4c8;margin:8px 0 0 0;">Верных ответов: <strong>' + s.correct + "</strong> из " + s.total + "</p>" +
+      '<p style="color:#9aa4c8;margin:8px 0 0 0;">Первичных баллов: <strong>' + s.score + "</strong> из " + s.maxScore + "</p>" +
+      '<p class="note" style="margin-top:10px;">Ответь на все блоки, чтобы увидеть итог.</p></div>';
+    return;
+  }
+
+  const verdict = pct >= 85 ? "Отличный результат! Можно выходить на высокий балл."
+    : pct >= 60 ? "Хорошо, но разбери ошибки и повтори темы."
+    : "Нужно плотно проработать базу: аудирование, чтение, грамматика, письмо.";
+
+  box.innerHTML =
+    '<div class="summary"><div class="score">' + s.score + "/" + s.maxScore + "</div>" +
+    '<p style="margin:8px 0;">' + esc(verdict) + "</p>" +
+    '<p style="color:#9aa4c8;margin:0;">Процент выполнения: ' + pct + "%</p>" +
+    '<p class="note" style="margin-top:10px;">Для заданий 37–42 сверь ответ с критериями ФИПИ.</p></div>';
+}
+
+/* =========================================================
+   УПРАВЛЕНИЕ
+   ========================================================= */
+function setFilter(filter, btn) {
+  currentFilter = filter;
+  document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+  if (btn) btn.classList.add("active");
+  renderQuiz();
+}
+
+function resetAll() {
+  if (!confirm("Сбросить все ответы и чек-лист?")) return;
+  Object.keys(savedAnswers).forEach(k => delete savedAnswers[k]);
+  checklistState = {};
+  renderChecklist();
+  renderQuiz();
+  updateStats();
+}
+
+function copyPhone() {
+  const phone = "89202275676";
+  const status = document.getElementById("copyStatus");
+  const show = () => {
+    if (status) status.textContent = "✓ Скопировано";
+    setTimeout(() => { if (status) status.textContent = ""; }, 2000);
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(phone).then(show).catch(() => {
+      if (status) status.textContent = "Скопируй вручную: " + phone;
+    });
+  } else {
+    if (status) status.textContent = "Скопируй вручную: " + phone;
+  }
+}
+
+/* =========================================================
+   ТАЙМЕР
+   ========================================================= */
+let timerSeconds = 11400;
+let timerInterval = null;
+let timerRunning = false;
+
+function formatTime(totalSeconds) {
+  const h = Math.floor(totalSeconds / 3600);
+  const m = Math.floor((totalSeconds % 3600) / 60);
+  const s = totalSeconds % 60;
+  return String(h).padStart(2, "0") + ":" + String(m).padStart(2, "0") + ":" + String(s).padStart(2, "0");
+}
+
+function updateTimerDisplay() {
+  const el = document.getElementById("timerDisplay");
+  if (el) el.textContent = formatTime(timerSeconds);
+  const w = document.getElementById("timerWidget");
+  if (w) {
+    w.classList.toggle("warning", timerSeconds <= 300 && timerSeconds > 60);
+    w.classList.toggle("danger", timerSeconds <= 60);
+  }
+}
+
+function toggleTimer() {
+  const btn = document.getElementById("timerToggle");
+  if (timerRunning) {
+    clearInterval(timerInterval);
+    timerRunning = false;
+    if (btn) btn.textContent = "▶";
+  } else {
+    timerInterval = setInterval(() => {
+      if (timerSeconds > 0) {
+        timerSeconds--;
+        updateTimerDisplay();
+      } else {
+        clearInterval(timerInterval);
+        timerRunning = false;
+        if (btn) btn.textContent = "▶";
+        alert("Время вышло!");
+      }
+    }, 1000);
+    timerRunning = true;
+    if (btn) btn.textContent = "⏸";
+  }
+}
+
+function resetTimer() {
+  clearInterval(timerInterval);
+  timerRunning = false;
+  const preset = document.getElementById("timerPreset");
+  timerSeconds = preset ? parseInt(preset.value, 10) : 11400;
+  updateTimerDisplay();
+  const btn = document.getElementById("timerToggle");
+  if (btn) btn.textContent = "▶";
+}
+
+/* =========================================================
+   СТАРТ — без localStorage, всё начинается с нуля
+   ========================================================= */
+document.addEventListener("DOMContentLoaded", () => {
+  /* savedAnswers и checklistState уже пустые — restore() НЕ вызывается */
+
+  renderCards("structureGrid", STRUCTURE_CARDS);
+  renderCards("changesGrid", CHANGES_CARDS);
+  renderCards("criteriaGrid", CRITERIA_CARDS);
+  renderChecklist();
+  renderPlan();
+  renderQuiz();
+  updateChecklistProgress();
+  updateStats();
+  updateTimerDisplay();
+
+  const timerToggle = document.getElementById("timerToggle");
+  const timerReset = document.getElementById("timerReset");
+  const timerPreset = document.getElementById("timerPreset");
+  if (timerToggle) timerToggle.addEventListener("click", toggleTimer);
+  if (timerReset) timerReset.addEventListener("click", resetTimer);
+  if (timerPreset) timerPreset.addEventListener("change", resetTimer);
+
+  /* Word counter live */
+  document.addEventListener("input", e => {
+    const m = e.target.id && e.target.id.match(/^input-(\d+)$/);
+    if (!m) return;
+    const n = parseInt(m[1], 10);
+    if (n === 37 || n === 38) updateWordCounter(n);
+  });
+
+  const totalWeight = Object.values(WEIGHTS).reduce((a, b) => a + b, 0);
+  console.assert(totalWeight === 82, "Total primary score must be 82");
+
+  console.log("[EGE-2027 DE] Проект собран. Ключи ФИПИ: 42/42. Аудио: audio-de.mp3 и audio-de-oral.mp3");
+  console.log("[EGE-2027 DE] Без localStorage — все ответы сбрасываются при обновлении страницы.");
+});
+
+/* Enter — быстрое подтверждение; Ctrl+Enter — в textarea */
+document.addEventListener("keydown", e => {
+  const active = document.activeElement;
+  if (!active || !active.classList.contains("answer-input")) return;
+  const match = active.id.match(/^input-(\d+)$/);
+  if (!match) return;
+  const n = parseInt(match[1], 10);
+
+  if (active.tagName === "TEXTAREA") {
+    if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) {
+      e.preventDefault();
+      checkTask(n);
+    }
+  } else {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      checkTask(n);
+    }
+  }
+});
+</script>
+</body>
+</html>
